@@ -1,4 +1,6 @@
 using System.DirectoryServices;
+using System.Diagnostics;
+using System.Security.Policy;
 
 namespace lab14
 {
@@ -37,11 +39,32 @@ namespace lab14
             if(Math.Abs(delta.Seconds) < 1)
             {
                 pWinner.Visible = true;
+                string target = "https://www.youtube.com/watch?v=saCaZ3KvYgY";
+               
+                try
+                {
+                    Process.Start(new ProcessStartInfo { FileName = target, UseShellExecute = true });
+                }
+
+                catch (System.ComponentModel.Win32Exception noBrowser)
+                {
+                    MessageBox.Show("man something wrong happened");
+                }
             }
             else
             {
+                string targetL = "https://www.youtube.com/watch?v=-ZGlaAxB7nI";
                 MessageBox.Show("you lose bud");
                 StartingInfo.Visible = true;
+                try
+                {
+                    Process.Start(new ProcessStartInfo { FileName = targetL, UseShellExecute = true });
+                }
+
+                catch (System.ComponentModel.Win32Exception noBrowser)
+                {
+                    MessageBox.Show("man something wrong happened");
+                }
             }
         }
 
